@@ -1,0 +1,31 @@
+{
+  "name": "simpleportpinger",
+  "version": "1.0.0",
+  "description": "Simple port pinger",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Milk-Cool/SimplePortPinger.git"
+  },
+  "keywords": [
+    "port",
+    "pinger",
+    "port",
+    "pinger"
+  ],
+  "author": "Milk_Cool",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Milk-Cool/SimplePortPinger/issues"
+  },
+  "bin": {
+    "checkports": "index.js"
+  },
+  "homepage": "https://github.com/Milk-Cool/SimplePortPinger#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
