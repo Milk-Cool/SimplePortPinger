@@ -23,6 +23,10 @@ const args = parseArgs({
 			"type": "string",
 			"short": "p"
 		},
+		"timeout": {
+			"type": "string",
+			"short": "t"
+		},
 		"help": {
 			"type": "boolean"
 		}
@@ -36,6 +40,7 @@ const OUTFILE = args.values.outfile;
 const HOST = args.values.host;
 const PORTS = args.values.ports;
 const HELP = args.values.help;
+const TIMEOUT = args.values.timeout;
 
 if(HELP) {
 	console.log(`
@@ -51,6 +56,7 @@ Arguments:
 -p, --ports   Defines the ports to ping in format 512to1023 (inclusive)
 -v, --verbose If present, prints out information about every port
 -o, --outfile Defines the file to write open ports to. Overwrites the contents of the file.
+-t, --timeout Defines the ping timeout
 `);
 	process.exit(0);
 }
@@ -58,7 +64,7 @@ Arguments:
 // https://stackoverflow.com/a/10723600
 const ping = (host, port) => new Promise(resolve => {
 	const socket = new Socket();
-	socket.setTimeout(2500);
+	socket.setTimeout(parseInt(TIMEOUT ?? 2500));
 	socket.on("connect", () => resolve([true, null, port]))
 		.on("error", e => resolve([false, e, port]))
 		.on("timeout", e => resolve([false, PING_ERROR_TIMEOUT, port]))
